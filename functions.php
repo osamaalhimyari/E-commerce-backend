@@ -42,15 +42,15 @@ $stmt = $con->prepare("SELECT  * FROM $table WHERE   $where ");
            }
     }else{
         if ($count > 0) {
-           return $data;
+           return array("status" => "success", "data" => $data);
            } else {
-            return json_encode(array("status" => "failure"));
+            return array("status" => "failure");
            }
     }
   
   
 }
-function getData($table, $where = "1=1", $values = null)
+function getData($table, $where = "1=1", $values = null, $json=true)
 {
     global $con;
     $data = array();
@@ -58,12 +58,18 @@ function getData($table, $where = "1=1", $values = null)
     $stmt->execute($values);
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
     $count  = $stmt->rowCount();
-    if ($count > 0) {
-        echo json_encode(array("status" => "success", "data" => $data));
-    } else {
-        echo json_encode(array("status" => "failure"));
+    if($json){
+        if ($count > 0) {
+            echo
+                json_encode(array("status" => "success", "data" => $data));
+           } else {
+               echo json_encode(array("status" => "failure"));
+           }
+    }else{
+       
+           return $data;
+          
     }
-    return $count;
 }
 
 function insertData($table, $data, $json = true)
