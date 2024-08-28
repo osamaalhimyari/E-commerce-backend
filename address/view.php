@@ -4,4 +4,4 @@ include "../connect.php" ;
 
 $usersid = filterRequest("userid") ; 
 
-getAllData("address" , "address_usersid = $usersid ") ; 
+getAllData("address" , "address_userid = $usersid ") ; 

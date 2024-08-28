@@ -10,7 +10,7 @@ $stmt = $con->prepare("SELECT SUM( COALESCE( totalprice ,0)) as totalprice , SUM
 WHERE  cartview.cart_userid =  $userid 
 GROUP BY cart_userid  ");
 
-$stmt->execute();
+$stmt->execute(); 
 
 
 $datacountprice = $stmt->fetch(PDO::FETCH_ASSOC);

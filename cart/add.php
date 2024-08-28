@@ -8,8 +8,8 @@ $usersid = filterRequest("userid");
 $itemsid = filterRequest("itemid");
 
 
-  getData("cart", "cart_itemid = $itemsid AND cart_userid = $usersid " ,null  , false );
-// AND cart_orders = 0
+  getData("cart", "cart_itemid = $itemsid AND cart_userid = $usersid AND cart_orderid = 0 " ,null  , false );
+
 
 $data = array(
     "cart_userid" =>  $usersid,
